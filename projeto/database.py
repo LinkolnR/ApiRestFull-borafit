@@ -7,10 +7,11 @@ from sqlalchemy_utils import create_database, database_exists
 
 load_dotenv(override=True)
 
-host=os.getenv('MD_DB_SERVER')
-user=os.getenv('MD_DB_USERNAME')
-password=os.getenv('MD_DB_PASSWORD')
-database_name = "edite_aqui"
+host = os.getenv('DB_HOST') 
+port = os.getenv('DB_PORT')
+database_name = os.getenv('DB_NAME') 
+user = os.getenv('DB_USER') 
+password = os.getenv('DB_PASSWORD') 
 
 SQLALCHEMY_DATABASE_URL = f"mysql+mysqlconnector://{user}:{password}@{host}/{database_name}"
 
