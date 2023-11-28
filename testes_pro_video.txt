@@ -1,0 +1,79 @@
+/membro/id/{id_membro}
+/membro/nome/{nome}
+/membro/genero/{genero}
+/membro/ativo/{ativo}
+/membro/restricao_medica
+/membro/plano/{plano_id}
+/membro/plano/nome/{nome}
+/personal/personal_id/{personal_id}
+/personal/nome/{nome}
+/personal/genero/{genero}
+/personal/membro/{membro_id}
+/personal/personal_id/{personal_id}/membros
+/plano/id/{plano_id}
+/plano/plano_id/{plano_id}/membros
+/plano/nome/{nome}
+/plano/nome/{nome}/membros
+/plano/promocao
+/plano/aulas_em_grupo
+
+
+TESTE POST MEMBRO
+
+{
+    "nome": "Giovana",
+    "sobrenome": "Andrade",
+    "genero": "Feminino",
+    "cpf": "23456784956",
+    "plano_id": 3,
+    "ativo": 0,
+    "telefone": "34590876543",
+    "email": "Giovanaa@example.com",
+    "restricao_medica": "preguiça"
+}
+
+TESTE POST PERSONAL
+
+{
+    "nome": "Lincoln",
+    "sobrenome": "Melo",
+    "membro_id": [],
+    "genero": "Masculino",
+    "telefone": "98765432765",
+    "email": "lincolnm@example.com",
+    "salario": 3500.0,
+    "cpf": "09876543232"
+}
+
+TESTE POST PLANO
+
+{
+    "preco": 50.0,
+    "descricao": "Plano Iniciante",
+    "nome": "Iniciante",
+    "aulas_em_grupo": 1,
+    "promocao": 0
+}
+
+
+TESTE PUT MEMBRO
+id = 8
+{
+    "sobrenome": "Cassoni",
+    "ativo": 1,
+    "personal_id": 6
+}
+
+TESTE PUT PERSONAL
+id = 6
+{
+    "email": "lincolnRPM@example.com",
+    "salario": 3550.0,
+}
+
+TESTE PUT PLANO
+id = 2
+{
+    "preco": 65.0,
+    "aulas_em_grupo": 0
+}
