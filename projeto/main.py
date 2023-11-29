@@ -71,7 +71,7 @@ def listar_membros_por_nome(nome: Annotated[str, Path(title="Nome de um membro d
     except Exception as e:
 
         log_error('falha ao listar listar_membros_por_nome',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 
 @app.get("/membro/ativo/{ativo}", response_model=list[schemas.MembroCreate])
@@ -85,7 +85,7 @@ def listar_membros_por_estado(ativo: Annotated[int, Path(title="Estado ativo ou 
     except Exception as e:
 
         log_error('falha ao listar listar_membros_por_estado',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 
 @app.get("/membro/plano/{plano_id}", response_model=list[schemas.MembroCreate])
@@ -99,7 +99,7 @@ def listar_membros_por_planoID(plano_id: Annotated[int, Path(title="Identificado
     except Exception as e:
 
         log_error('falha ao listar listar_membros_por_planoID',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/membro/id/{membro_id}", response_model=schemas.MembroCreate)
 def devolve_informacoes_do_membro(membro_id: Annotated[int, Path(title="Identificador do membro",description="Coloque o identificador que representa o id do membro", example=1)], db: Session = Depends(get_db)):
@@ -112,7 +112,7 @@ def devolve_informacoes_do_membro(membro_id: Annotated[int, Path(title="Identifi
     except Exception as e:
 
         log_error('falha ao listar devolve_informacoes_do_membro',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/membro/genero/{genero}", response_model=list[schemas.MembroCreate])
 def devolve_informacoes_do_membro(genero: Annotated[str, Path(title="Gênero do membro",description="Digite o genero com o qual o membro se identifica", example="Feminino")], db: Session = Depends(get_db)):
@@ -125,7 +125,7 @@ def devolve_informacoes_do_membro(genero: Annotated[str, Path(title="Gênero do 
     except Exception as e:
 
         log_error('falha ao listar devolve_informacoes_do_membro',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/membro/restricao_medica", response_model=list[schemas.MembroCreate])
 def listar_membros_com_restricao(db: Session = Depends(get_db)):
@@ -138,7 +138,7 @@ def listar_membros_com_restricao(db: Session = Depends(get_db)):
     except Exception as e:
 
         log_error('falha ao listar listar_membros_com_restricao',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/membro/plano/nome/{nome}", response_model=list[schemas.MembroBase])
 def listar_membros_do_plano_nome(nome: Annotated[str, Path(title="Nome do plano",description="Coloque o nome do plano para listar os membros que fazem parte do plano escolhido", example="Intensivo")], db: Session = Depends(get_db)):
@@ -151,7 +151,7 @@ def listar_membros_do_plano_nome(nome: Annotated[str, Path(title="Nome do plano"
     except Exception as e:
 
         log_error('falha ao listar listar_membros_do_plano_nome',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 # ### GETS PERSONAIS
     
@@ -166,7 +166,7 @@ def devolve_informacoes_do_personal(personal_id: Annotated[int, Path(title="Iden
     except Exception as e:
 
         log_error('falha ao listar devolve_informacoes_do_personal',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/personal/genero/{genero}", response_model=list[schemas.PersonalBase])
 def listar_personal_por_genero(genero: Annotated[str, Path(title="Gênero do personal",description="Digite o genero com o qual o personal se identifica", example="Masculino")], db: Session = Depends(get_db)):
@@ -179,7 +179,7 @@ def listar_personal_por_genero(genero: Annotated[str, Path(title="Gênero do per
     except Exception as e:
 
         log_error('falha ao listar listar_personal_por_genero',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/personal/personal_id/{personal_id}/membros", response_model=list[schemas.MembroBase])
 def listar_membros_com_personal_id(personal_id: Annotated[int, Path(title="Identificador do personal",description="Coloque o identificador do personal para listar os membros que esse personal acompanha", example=1)], db: Session = Depends(get_db)):
@@ -192,7 +192,7 @@ def listar_membros_com_personal_id(personal_id: Annotated[int, Path(title="Ident
     except Exception as e:
 
         log_error('falha ao listar listar_membros_com_personal_id',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/personal/nome/{nome}", response_model=list[schemas.PersonalBase])
 def listar_personais_por_nome(nome: Annotated[str, Path(title="Nome de um personal da academia",description="Escreva o nome do personal e receba uma lista com todos os personais que tem o nome escolhido", example="Fulano")], db: Session = Depends(get_db)):
@@ -205,7 +205,7 @@ def listar_personais_por_nome(nome: Annotated[str, Path(title="Nome de um person
     except Exception as e:
 
         log_error('falha ao listar listar_personais_por_nome',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/personal/membro/{membro_id}", response_model=list[schemas.PersonalBase])
 def listar_personais_por_nome(membro_id: Annotated[int, Path(title="Identificador do membro",description="Coloque o identificador do membro para receber as informações do personal que acompanha o membro", example=1)], db: Session = Depends(get_db)):
@@ -218,7 +218,7 @@ def listar_personais_por_nome(membro_id: Annotated[int, Path(title="Identificado
     except Exception as e:
 
         log_error('falha ao listar listar_personais_por_nome',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 # ### GET PLANOS
 @app.get("/plano/plano_id/{plano_id}/membros", response_model=schemas.PlanoBase)
@@ -232,7 +232,7 @@ def listar_membro_do_plano_id(plano_id: Annotated[int, Path(title="Identificador
     except Exception as e:
 
         log_error('falha ao listar listar_membro_do_plano_id',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/plano/nome/{nome}/membros", response_model=schemas.PlanoBase)
 def listar_membro_do_plano_nome(nome: Annotated[str, Path(title="Nome do plano",description="Coloque o nome do plano para ver as informações do plano escolhido", example="basico")], db: Session = Depends(get_db)):
@@ -245,7 +245,7 @@ def listar_membro_do_plano_nome(nome: Annotated[str, Path(title="Nome do plano",
     except Exception as e:
 
         log_error('falha ao listar listar_membro_do_plano_nome',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/plano/aulas_em_grupo", response_model=list[schemas.PlanoBase])
 def listar_planos_com_aulas_em_grupo(db: Session = Depends(get_db)):
@@ -258,7 +258,7 @@ def listar_planos_com_aulas_em_grupo(db: Session = Depends(get_db)):
     except Exception as e:
 
         log_error('falha ao listar listar_planos_com_aulas_em_grupo',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/plano/id/{plano_id}", response_model=schemas.PlanoBase)
 def informacoes_plano_id(plano_id: Annotated[int, Path(title="Identificador do plano",description="Coloque o identificador do plano para ver as informações do plano escolhido", example=1)], db: Session = Depends(get_db)):
@@ -271,7 +271,7 @@ def informacoes_plano_id(plano_id: Annotated[int, Path(title="Identificador do p
     except Exception as e:
 
         log_error('falha ao listar informacoes_plano_id',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/plano/nome/{nome}", response_model=list[schemas.PlanoBase])
 def infomacoes_plano_nome(nome: Annotated[str, Path(title="Nome do plano",description="Coloque o nome do plano para ver as informações do plano escolhido", example="basico")], db: Session = Depends(get_db)):
@@ -284,7 +284,7 @@ def infomacoes_plano_nome(nome: Annotated[str, Path(title="Nome do plano",descri
     except Exception as e:
 
         log_error('falha ao listar infomacoes_plano_nome',str(e))
-        raise
+        raise  HTTPException(status_code=400, detail=detalhe,)
 
 @app.get("/plano/promocao", response_model=list[schemas.PlanoBase])
 def listar_planos_com_promocao(db: Session = Depends(get_db)):
@@ -297,7 +297,7 @@ def listar_planos_com_promocao(db: Session = Depends(get_db)):
     except Exception as e:
 
         log_error('falha ao listar listar_planos_com_promocao',str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 
 # ### DELETES:
 @app.delete("/membro/{membro_id}", response_model=list[MembroCreate])
@@ -309,7 +309,7 @@ def deletar_membro(membro_id: Annotated[int, Path(title="Identificador do membro
         raise HTTPException(status_code=400, detail=detalhe)
     except Exception as e:
         log_error('falha ao deletar deletar_membro', str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 @app.delete("/personal/{personal_id}", response_model=list[PersonalCreate])
 def deletar_personal(personal_id: Annotated[int, Path(title="Identificador do personal",description="Coloque o identificador do personal para deletar o personal escolhido", example=1)], db: Session = Depends(get_db)):
     try:
@@ -319,7 +319,7 @@ def deletar_personal(personal_id: Annotated[int, Path(title="Identificador do pe
         raise HTTPException(status_code=400, detail=detalhe)
     except Exception as e:
         log_error('falha ao deletar deletar_personal', str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 @app.delete("/plano/{plano_id}", response_model=list[PlanoCreate])
 def deletar_plano(plano_id: Annotated[int, Path(title="Identificador do plano",description="Coloque o identificador do plano para deletar o plano escolhido", example=1)], db: Session = Depends(get_db)):
     try:
@@ -329,7 +329,7 @@ def deletar_plano(plano_id: Annotated[int, Path(title="Identificador do plano",d
         raise HTTPException(status_code=400, detail=detalhe)
     except Exception as e:
         log_error('falha ao deletar deletar_plano', str(e))
-        raise
+        raise HTTPException(status_code=400, detail=detalhe,)
 # # POSTS :
 
 @app.post("/membro/", response_model=schemas.MembroBase)
@@ -338,21 +338,21 @@ def create_user(membro: Annotated[schemas.MembroBase,Body(description="Corpo par
         return crud.create_membro(db=db, membro=membro)
     except Exception as e:
         log_error('falhao ao realizar o post de user', str(e))
-        raise
+        raise HTTPException(status_code=400, detail="erro ao realizar o post")
 @app.post("/plano/", response_model=schemas.PlanoCreate)
 def create_plano(plano: Annotated[schemas.PlanoBase,Body(description="Corpo para envio das informações para serem adicionadas")], db: Session = Depends(get_db)):
     try:
         return crud.create_plano(db=db, plano=plano)
     except Exception as e:
         log_error('falhao ao realizar o post de plano', str(e))
-        raise
+        raise HTTPException(status_code=400, detail="erro ao realizar o post")
 @app.post("/personal/", response_model=schemas.PersonalCreate)
 def create_personal(personal: Annotated[schemas.PersonalBase,Body(description="Corpo para envio das informações para serem adicionadas")], db: Session = Depends(get_db)):
     try:
         return crud.create_personal(db=db, personal=personal)
     except Exception as e:
         log_error('falhao ao realizar o post de personal ', str(e))
-        raise
+        raise  HTTPException(status_code=400, detail="erro ao realizar o post")
 
 # # PUTS :
 
@@ -365,6 +365,7 @@ def update_membro(membro_id: int, membro_update: schemas.MembroUpdate, db: Sessi
         return crud.get_membro_id(db=db,membro_id=membro_id)
     except Exception as e:
         log_error('falha ao fazer o put de membro', str(e))
+        raise HTTPException(status_code=404, detail="Membro não encontrado")
 @app.put("/personal/{personal_id}", response_model=schemas.PersonalBase)
 def update_personal(personal_id: int, personal_update: schemas.PersonalUpdate, db: Session = Depends(get_db)):
     try:
@@ -374,6 +375,8 @@ def update_personal(personal_id: int, personal_update: schemas.PersonalUpdate, d
         return crud.get_personal_id(db=db,personal_id=personal_id)
     except Exception as e:
         log_error('falha ao fazer o put de personal', str(e))
+        raise HTTPException(status_code=404, detail="Personal não encontrado")
+
 @app.put("/plano/{plano_id}", response_model=schemas.PlanoBase)
 def update_plano(plano_id: int, plano_update: schemas.PlanoUpdate, db: Session = Depends(get_db)):
     try:
@@ -383,6 +386,8 @@ def update_plano(plano_id: int, plano_update: schemas.PlanoUpdate, db: Session =
         return crud.get_plano_id(db=db,plano_id=plano_id)
     except Exception as e:
         log_error('falha ao fazer o put de plano', str(e))    
+        raise HTTPException(status_code=404, detail="plano não encontrado")
+
 
 
 
