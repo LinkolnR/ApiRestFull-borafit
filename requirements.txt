@@ -5,3 +5,4 @@ pydantic
 fastapi
 boto3
 logging
+uvicorn

@@ -8,6 +8,8 @@ import boto3
 import logging
 models.Base.metadata.create_all(bind=engine)
 from sqlalchemy.orm import Session
+import uvicorn
+
 app = FastAPI()
 
 
@@ -384,4 +386,5 @@ def update_plano(plano_id: int, plano_update: schemas.PlanoUpdate, db: Session =
 
 
 
-
+if __name__ == "__main__":
+    uvicorn.run("main:app", host='localhost', port=8080, log_level="info")

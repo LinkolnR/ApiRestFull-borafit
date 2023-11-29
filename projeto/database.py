@@ -8,7 +8,7 @@ from sqlalchemy_utils import create_database, database_exists
 load_dotenv(override=True)
 
 host = os.getenv('DB_HOST') 
-port = os.getenv('DB_PORT')
+# port = os.getenv('DB_PORT')
 database_name = os.getenv('DB_NAME') 
 user = os.getenv('DB_USER') 
 password = os.getenv('DB_PASSWORD') 
