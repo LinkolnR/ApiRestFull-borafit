@@ -392,4 +392,4 @@ def update_plano(plano_id: int, plano_update: schemas.PlanoUpdate, db: Session =
 
 
 if __name__ == "__main__":
-    uvicorn.run("main:app --reload", host='127.0.0.1', port=8080, log_level="info")
+    uvicorn.run("main:app", host='127.0.0.1', port=8080, log_level="info")
