@@ -103,6 +103,7 @@ async def listar_membros_por_nome(nome: Annotated[str, Path(title="Nome de um me
         if membros_lista is None:
             detalhe = "Não tem nenhum membro com esse nome"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return membros_lista
     except Exception as e:
 
@@ -117,6 +118,7 @@ async def listar_membros_por_estado(ativo: Annotated[int, Path(title="Estado ati
         if membros_lista is None:
             detalhe = "Não tem nenhum membro com esse estado"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return membros_lista
     except Exception as e:
 
@@ -131,6 +133,7 @@ async def listar_membros_por_planoID(plano_id: Annotated[int, Path(title="Identi
         if membros_lista is None:
             detalhe = "Não tem nenhum membro com esse plano"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return membros_lista
     except Exception as e:
 
@@ -144,6 +147,7 @@ async def devolve_informacoes_do_membro(membro_id: Annotated[int, Path(title="Id
         if membros_lista is None:
             detalhe = "Não tem nenhum membro com esse id"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return membros_lista
     except Exception as e:
 
@@ -157,6 +161,7 @@ async def devolve_informacoes_do_membro(genero: Annotated[str, Path(title="Gêne
         if membros_lista is None:
             detalhe = "Não tem nenhum membro com esse genero"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return membros_lista
     except Exception as e:
 
@@ -170,6 +175,7 @@ async def listar_membros_com_restricao(db: Session = Depends(get_db)):
         if membros_lista is None:
             detalhe = "Não existe ninguém com restrição médica"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return membros_lista
     except Exception as e:
 
@@ -183,6 +189,7 @@ async def listar_membros_do_plano_nome(nome: Annotated[str, Path(title="Nome do 
         if membros_lista is None:
             detalhe = "Não existe nenhum plano com esse nome ou Não existe ninguém cadastrado nesse plano"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return membros_lista
     except Exception as e:
 
@@ -198,6 +205,7 @@ async def devolve_informacoes_do_personal(personal_id: Annotated[int, Path(title
         if personal_lista is None:
             detalhe = "Não tem nenhum personal com esse id"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return personal_lista
     except Exception as e:
 
@@ -211,6 +219,7 @@ async def listar_personal_por_genero(genero: Annotated[str, Path(title="Gênero 
         if personal_lista is None:
             detalhe = "Não tem nenhum personal com esse gênero"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return personal_lista
     except Exception as e:
 
@@ -224,6 +233,7 @@ async def listar_membros_com_personal_id(personal_id: Annotated[int, Path(title=
         if personal_lista is None:
             detalhe = "Não existe um personal com esse id ou Nenhum membro tem esse personal"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return personal_lista
     except Exception as e:
 
@@ -237,6 +247,7 @@ async def listar_personais_por_nome(nome: Annotated[str, Path(title="Nome de um 
         if personal_lista is None:
             detalhe = "Não existe nenhum personal com esse nome"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return personal_lista
     except Exception as e:
 
@@ -250,6 +261,7 @@ async def listar_personais_por_nome(membro_id: Annotated[int, Path(title="Identi
         if personal_lista is None:
             detalhe = "Não existe um id para o personal ligado ao membro"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return personal_lista
     except Exception as e:
 
@@ -264,6 +276,7 @@ async def listar_membro_do_plano_id(plano_id: Annotated[int, Path(title="Identif
         if planos_lista is None:
             detalhe = "Não existe um plano com esse id ou Não existe um membro com esse plano"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return planos_lista
     except Exception as e:
 
@@ -277,6 +290,7 @@ async def listar_membro_do_plano_nome(nome: Annotated[str, Path(title="Nome do p
         if planos_lista is None:
             detalhe = "Não existe um plano com esse nome ou Não existe um membro com esse plano"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return planos_lista
     except Exception as e:
 
@@ -290,6 +304,7 @@ async def listar_planos_com_aulas_em_grupo(db: Session = Depends(get_db)):
         if planos_lista is None:
             detalhe = "Não há nenhuma aula em grupo"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return planos_lista
     except Exception as e:
 
@@ -303,6 +318,7 @@ async def informacoes_plano_id(plano_id: Annotated[int, Path(title="Identificado
         if planos_lista is None:
             detalhe = "Não existe um plano com o esse id"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return planos_lista
     except Exception as e:
 
@@ -316,6 +332,7 @@ async def infomacoes_plano_nome(nome: Annotated[str, Path(title="Nome do plano",
         if planos_lista is None:
             detalhe = "Não tem nenhum membro com esse nome"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return planos_lista
     except Exception as e:
 
@@ -329,6 +346,7 @@ async def listar_planos_com_promocao(db: Session = Depends(get_db)):
         if planos_lista is None:
             detalhe = "Nao tem nenhum plano com promocao"
             raise HTTPException(status_code=400, detail=detalhe,)
+        await push_logs_to_cloudwatch('realizou um get')
         return planos_lista
     except Exception as e:
 
@@ -340,8 +358,10 @@ async def listar_planos_com_promocao(db: Session = Depends(get_db)):
 async def deletar_membro(membro_id: Annotated[int, Path(title="Identificador do membro",description="Coloque o identificador do membro para deletar o membro escolhido", example=1)], db: Session = Depends(get_db)):
     try:
         if crud.deletar_membro(db=db, membro_id=membro_id):
+            await push_logs_to_cloudwatch('realizou um delete')
             return db.query(models.Membro).all()
         detalhe = "Não foi encontrado nenhum membro com esse id"
+        await push_logs_to_cloudwatch(detalhe)
         raise HTTPException(status_code=400, detail=detalhe)
     except Exception as e:
         await push_logs_to_cloudwatch('falha ao deletar deletar_membro',)
@@ -350,7 +370,9 @@ async def deletar_membro(membro_id: Annotated[int, Path(title="Identificador do 
 async def deletar_personal(personal_id: Annotated[int, Path(title="Identificador do personal",description="Coloque o identificador do personal para deletar o personal escolhido", example=1)], db: Session = Depends(get_db)):
     try:
         if crud.deletar_personal(db=db, personal_id=personal_id):
+            await push_logs_to_cloudwatch('realizou um delete')
             return db.query(models.Personal).all()
+        await push_logs_to_cloudwatch(detalhe)
         detalhe = "Não foi encontrado nenhum personal com esse id"
         raise HTTPException(status_code=400, detail=detalhe)
     except Exception as e:
@@ -360,8 +382,10 @@ async def deletar_personal(personal_id: Annotated[int, Path(title="Identificador
 async def deletar_plano(plano_id: Annotated[int, Path(title="Identificador do plano",description="Coloque o identificador do plano para deletar o plano escolhido", example=1)], db: Session = Depends(get_db)):
     try:
         if crud.deletar_plano(db=db, plano_id=plano_id):
+            await push_logs_to_cloudwatch('realizou um delete')
             return db.query(models.Plano).all()
         detalhe = "Não foi encontrado nenhum plano com esse id"
+        await push_logs_to_cloudwatch(detalhe)
         raise HTTPException(status_code=400, detail=detalhe)
     except Exception as e:
         await push_logs_to_cloudwatch('falha ao deletar deletar_plano',)
@@ -371,6 +395,7 @@ async def deletar_plano(plano_id: Annotated[int, Path(title="Identificador do pl
 @app.post("/membro/", response_model=schemas.MembroBase)
 async def create_user(membro: Annotated[schemas.MembroBase,Body(description="Corpo para envio das informações para serem adicionadas")], db: Session = Depends(get_db)):
     try:
+        await push_logs_to_cloudwatch('realizado o post')
         return crud.create_membro(db=db, membro=membro)
     except Exception as e:
         await push_logs_to_cloudwatch('falhao ao realizar o post de user',)
@@ -378,6 +403,8 @@ async def create_user(membro: Annotated[schemas.MembroBase,Body(description="Cor
 @app.post("/plano/", response_model=schemas.PlanoCreate)
 async def create_plano(plano: Annotated[schemas.PlanoBase,Body(description="Corpo para envio das informações para serem adicionadas")], db: Session = Depends(get_db)):
     try:
+        await push_logs_to_cloudwatch('realizado o post')
+
         return crud.create_plano(db=db, plano=plano)
     except Exception as e:
         await push_logs_to_cloudwatch('falhao ao realizar o post de plano',)
@@ -385,6 +412,8 @@ async def create_plano(plano: Annotated[schemas.PlanoBase,Body(description="Corp
 @app.post("/personal/", response_model=schemas.PersonalCreate)
 async def create_personal(personal: Annotated[schemas.PersonalBase,Body(description="Corpo para envio das informações para serem adicionadas")], db: Session = Depends(get_db)):
     try:
+        await push_logs_to_cloudwatch('realizado o post')
+
         return crud.create_personal(db=db, personal=personal)
     except Exception as e:
         await push_logs_to_cloudwatch('falhao ao realizar o post de personal ',)
