@@ -68,7 +68,7 @@ except NoCredentialsError:
     logger.error("AWS credentials not found")
 
 
-LOG_GROUP = '/my-fastapi-app/logs'
+LOG_GROUP = '/fast-api/logs'
 LOG_STREAM = os.getenv("INSTANCE_ID")
 
 
